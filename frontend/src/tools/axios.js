@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = `/api/`;
+axios.defaults.baseURL = `http://0.0.0.0:8888/api/`;
 
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 axios.defaults.headers.common['Access-Control-Allow-Credentials'] = 'true';

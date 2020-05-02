@@ -1,13 +1,49 @@
 <template>
   <div id="app">
-    MY APPLICATION PAGE
+    <input-file
+      @input="handleInputFile"/>
   </div>
 </template>
 
 <script>
+import InputFile from './components/elements/inputFile.vue';
+
 export default {
   name: 'App',
+  
   components: {
+    InputFile
+  },
+
+  data() {
+    return {
+      file: null
+    };
+  },
+
+  methods: {
+    handleInputFile(value) {
+      console.log("HANDLE INPUT FILE: ", value);
+      this.file = value;
+
+      const formData = new FormData();
+      formData.append("images", value);
+      this.upload(formData);
+    },
+
+    upload(postData) {
+      this.$axios.post('/upload', postData, {
+        onUploadProgress: this.uploadProgress
+      }).then((response) => {
+        console.log("RESPONSE: ", response);
+      }).catch((error) => {
+        console.log("ERROR: ", error);
+      })
+    },
+
+    uploadProgress(event) {
+      console.log("PROGRESS EVENT: ", event);
+    }
   }
 }
 </script>
@@ -45,4 +81,7 @@ body
   margin-top 60px
   width 100vw
   height 100vh
+
+*[hidden]
+  display none
 </style>
