@@ -22,4 +22,3 @@
 *.sw?
 
 node_modules/
-dist/
