@@ -2,7 +2,7 @@
   <div class="ig-input-file">
     <label
       :for="ObjectID"
-      v-text="'INPUT FILE'"/>
+      v-text="label"/>
     <input
       :id="ObjectID"
       @input="handleInput"
@@ -21,6 +21,11 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+
+    label: {
+      type: String,
+      default: 'click'
     }
   },
 
@@ -42,7 +47,15 @@ export default {
 
 <style lang="stylus">
 .ig-input-file
-  color green
-  label 
+  color black
+  label
+    display block
+    position relative
+    text-align center
     cursor pointer
+    padding 10px
+    border 1px solid black
+    border-radius 4px
+    &:active
+      background-color rgba(white, .2)
 </style>

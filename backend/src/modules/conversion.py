@@ -60,7 +60,7 @@ class Conversion:
             return {
                 "count": count,
                 "countConversion": countConversion,
-                "file": "/static/" + outputFileName
+                "file": "/uploads/" + outputFileName
             }
 
         return None
